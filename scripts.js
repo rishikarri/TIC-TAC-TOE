@@ -40,6 +40,7 @@ function markSquare(currentSquare){
 	if((currentSquare.innerHTML === "X") || (currentSquare.innerHTML === "O")){
 		document.getElementById("spaceForText").innerHTML = "Someone is there. Stop cheating!";
 	}else{
+		document.getElementById("spaceForText").innerHTML = "&nbsp";
 	
 		if (whosTurn === 1){
 			currentSquare.innerHTML = "X";
@@ -55,7 +56,7 @@ function markSquare(currentSquare){
 		
 		// console.log(player1Squares);
 		// console.log(player2Squares);
-		document.getElementById("spaceForText").innerHTML = "space";
+		
 	}
 
 }
@@ -80,7 +81,6 @@ function checkWin(whoJustMoved, currentPlayerSquares){
 			//someone won
 			// Player had all 3 of these j's which means they win
 			gameOver(whoJustMoved, winningCombos[i]);
-			console.log("I'm listening");
 			break;
 		}
 		console.log("Combo Complete");
@@ -92,10 +92,15 @@ function checkWin(whoJustMoved, currentPlayerSquares){
 //program gameOVer function
 
 function gameOver(whoJustWon, winningCombo){
-	console.log('gjhgjghgjgjhgjhg')
+	
 	var message = "Congrats to player " + whoJustWon + ". You just won with " + winningCombo;
 	document.getElementById("spaceForText").innerHTML = message;
+	console.log(message);
 	console.log(whoJustWon, winningCombo);
+
+	for (var i = 0; i < winningCombo.length; i++){
+		document.getElementById(winningCombo[i]).className += ' winning-square';
+	}
 }
 //computer move
 //1. Generate random number and letter for computer 

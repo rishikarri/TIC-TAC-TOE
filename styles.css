@@ -20,3 +20,7 @@
 #spaceForText{
 	color: firebrick;	
 }
+
+.winning-square{
+	background-color: green;
+}
