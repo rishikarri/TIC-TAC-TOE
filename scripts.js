@@ -16,6 +16,7 @@
 var whosTurn = 1;
 var player1Squares = [];
 var player2Squares = [];
+var someOneWon = false;
  
 
  // set up winners array
@@ -39,7 +40,10 @@ function markSquare(currentSquare){
 	//change the square to X onclick
 	if((currentSquare.innerHTML === "X") || (currentSquare.innerHTML === "O")){
 		document.getElementById("spaceForText").innerHTML = "Someone is there. Stop cheating!";
-	}else{
+	}else if(someOneWon){
+		document.getElementById("spaceForText").innerHTML = "I'm sorry but it's over...Someone already won!";
+	}
+	else{
 		document.getElementById("spaceForText").innerHTML = "&nbsp";
 	
 		if (whosTurn === 1){
@@ -101,6 +105,7 @@ function gameOver(whoJustWon, winningCombo){
 	for (var i = 0; i < winningCombo.length; i++){
 		document.getElementById(winningCombo[i]).className += ' winning-square';
 	}
+	someOneWon = true;
 }
 //computer move
 //1. Generate random number and letter for computer 
